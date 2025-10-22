@@ -4,6 +4,7 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import { Separator } from '@/components/ui/separator';
+import funcUrls from '../../backend/func2url.json';
 
 interface UserData {
   id: string;
@@ -26,7 +27,7 @@ interface ApiResponse {
   leaderboard: UserData[];
 }
 
-const BACKEND_URL = 'https://functions.poehali.dev/b2c76a34-3c91-46fc-b13f-bd1d518ee850';
+const BACKEND_URL = funcUrls.sheets;
 
 export default function TrainingProgress() {
   const [data, setData] = useState<ApiResponse | null>(null);
@@ -52,8 +53,16 @@ export default function TrainingProgress() {
           ? `${BACKEND_URL}?user_id=${encodeURIComponent(userIdToFetch)}`
           : BACKEND_URL;
         
+        console.log('Fetching data from:', url);
         const response = await fetch(url);
+        console.log('Response status:', response.status);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const result = await response.json();
+        console.log('Data received:', result);
         setData(result);
         
         if (result.user) {
@@ -97,7 +106,7 @@ export default function TrainingProgress() {
             Пройди 10 тренировок до 31.10 и получи скидку 15% на следующий блок!
           </div>
           
-          {user && (
+          {user ? (
             <>
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
@@ -114,47 +123,53 @@ export default function TrainingProgress() {
                 </div>
               </div>
             </>
+          ) : (
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
+              <div className="text-sm opacity-90">Ваши данные не найдены в таблице участников</div>
+            </div>
           )}
         </CardContent>
       </Card>
 
-      {user && data && (
+      {data && (
         <>
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Icon name="BarChart3" className="w-5 h-5" />
-                Ваша статистика
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-4 bg-muted rounded-lg">
-                  <div className="text-2xl font-bold text-primary">{user.trainings_completed}</div>
-                  <div className="text-sm text-muted-foreground">Выполнено</div>
+          {user && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Icon name="BarChart3" className="w-5 h-5" />
+                  Ваша статистика
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="text-center p-4 bg-muted rounded-lg">
+                    <div className="text-2xl font-bold text-primary">{user.trainings_completed}</div>
+                    <div className="text-sm text-muted-foreground">Выполнено</div>
+                  </div>
+                  <div className="text-center p-4 bg-muted rounded-lg">
+                    <div className="text-2xl font-bold text-primary">#{data.rank}</div>
+                    <div className="text-sm text-muted-foreground">Ваше место</div>
+                  </div>
                 </div>
-                <div className="text-center p-4 bg-muted rounded-lg">
-                  <div className="text-2xl font-bold text-primary">#{data.rank}</div>
-                  <div className="text-sm text-muted-foreground">Ваше место</div>
+                
+                <Separator />
+                
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">Всего участников:</span>
+                    <span className="font-semibold">{data.stats.total_participants}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">Выполнили план:</span>
+                    <Badge variant="secondary" className="font-semibold">
+                      {data.stats.total_completed_goal} чел.
+                    </Badge>
+                  </div>
                 </div>
-              </div>
-              
-              <Separator />
-              
-              <div className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Всего участников:</span>
-                  <span className="font-semibold">{data.stats.total_participants}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Выполнили план:</span>
-                  <Badge variant="secondary" className="font-semibold">
-                    {data.stats.total_completed_goal} чел.
-                  </Badge>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          )}
 
           <Card>
             <CardHeader>
@@ -169,7 +184,7 @@ export default function TrainingProgress() {
                   <div
                     key={participant.id}
                     className={`flex items-center justify-between p-3 rounded-lg ${
-                      participant.id === user.id 
+                      user && participant.id === user.id 
                         ? 'bg-primary/10 border-2 border-primary' 
                         : 'bg-muted'
                     }`}
