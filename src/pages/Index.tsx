@@ -64,10 +64,17 @@ const Index = () => {
   const totalCompleted = 2;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-yellow-50">
       <div className="container max-w-4xl mx-auto px-4 py-6 pb-24">
         <div className="text-center mb-8 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-2 tracking-tight">Город Спорта</h1>
+          <div className="mb-4">
+            <img 
+              src="https://cdn.poehali.dev/files/ef024d02-bf6f-4947-be2e-e465164d84d7.jpg" 
+              alt="Город Спорта" 
+              className="w-32 h-32 mx-auto mb-4 object-contain"
+            />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-2 tracking-tight">ТРЕКЕР ТРЕНИРОВОК</h1>
           <p className="text-muted-foreground">Твой путь к успеху</p>
         </div>
 
@@ -89,7 +96,7 @@ const Index = () => {
 
           <TabsContent value="home" className="space-y-6">
             <Card className="border-2 border-primary/20 shadow-lg animate-scale-in">
-              <CardHeader className="bg-gradient-to-r from-primary to-orange-600 text-white rounded-t-lg">
+              <CardHeader className="bg-gradient-to-r from-primary to-yellow-400 text-secondary rounded-t-lg">
                 <CardTitle className="text-center text-xl md:text-2xl font-bold">
                   Пройди 10 тренировок до 31.10 и получи скидку 15% на следующий блок!
                 </CardTitle>
@@ -121,8 +128,8 @@ const Index = () => {
                       />
                       <defs>
                         <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#FF6B00" />
-                          <stop offset="100%" stopColor="#2ecc71" />
+                          <stop offset="0%" stopColor="#FFD700" />
+                          <stop offset="100%" stopColor="#FFA500" />
                         </linearGradient>
                       </defs>
                     </svg>
@@ -170,13 +177,13 @@ const Index = () => {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-orange-50 to-green-50 p-4 rounded-lg border-2 border-primary/30">
+                <div className="bg-gradient-to-r from-yellow-50 to-gray-50 p-4 rounded-lg border-2 border-primary/30">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
                       <Icon name="TrendingUp" size={20} className="text-secondary" />
                       <p className="font-semibold text-secondary">Ваш рейтинг</p>
                     </div>
-                    <Badge className="bg-primary text-white text-lg px-4 py-1 font-bold">
+                    <Badge className="bg-primary text-secondary text-lg px-4 py-1 font-bold">
                       #{currentUser.rank}
                     </Badge>
                   </div>
@@ -190,7 +197,7 @@ const Index = () => {
 
           <TabsContent value="leaderboard" className="space-y-4">
             <Card className="border-2 shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white">
+              <CardHeader className="bg-gradient-to-r from-primary to-yellow-400 text-secondary">
                 <CardTitle className="flex items-center gap-2 text-2xl">
                   <Icon name="Trophy" size={28} />
                   Таблица лидеров
@@ -205,7 +212,7 @@ const Index = () => {
                         key={participant.id}
                         className={`flex items-center justify-between p-4 rounded-lg border-2 transition-all hover:shadow-md ${
                           isCurrentUser
-                            ? 'bg-gradient-to-r from-primary/20 to-orange-100 border-primary animate-pulse-glow'
+                            ? 'bg-gradient-to-r from-primary/20 to-yellow-100 border-primary animate-pulse-glow'
                             : 'bg-white border-gray-200 hover:border-primary/50'
                         }`}
                       >
@@ -213,11 +220,11 @@ const Index = () => {
                           <div
                             className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg ${
                               index === 0
-                                ? 'bg-yellow-400 text-white'
+                                ? 'bg-primary text-secondary'
                                 : index === 1
-                                ? 'bg-gray-300 text-white'
+                                ? 'bg-gray-400 text-white'
                                 : index === 2
-                                ? 'bg-orange-400 text-white'
+                                ? 'bg-yellow-600 text-white'
                                 : 'bg-gray-100 text-secondary'
                             }`}
                           >
@@ -256,7 +263,7 @@ const Index = () => {
 
           <TabsContent value="achievements" className="space-y-4">
             <Card className="border-2 shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+              <CardHeader className="bg-gradient-to-r from-secondary to-gray-800 text-white">
                 <CardTitle className="flex items-center gap-2 text-2xl">
                   <Icon name="Award" size={28} />
                   Призы и достижения
@@ -269,7 +276,7 @@ const Index = () => {
                       key={achievement.id}
                       className={`p-6 rounded-lg border-2 transition-all ${
                         achievement.unlocked
-                          ? 'bg-gradient-to-br from-green-50 to-green-100 border-accent shadow-md'
+                          ? 'bg-gradient-to-br from-primary/10 to-yellow-50 border-primary shadow-md'
                           : 'bg-gray-50 border-gray-300 opacity-75'
                       }`}
                     >
@@ -277,7 +284,7 @@ const Index = () => {
                         <div
                           className={`p-3 rounded-full ${
                             achievement.unlocked
-                              ? 'bg-accent text-white'
+                              ? 'bg-primary text-secondary'
                               : 'bg-gray-300 text-gray-500'
                           }`}
                         >
@@ -289,7 +296,7 @@ const Index = () => {
                               {achievement.title}
                             </h3>
                             {achievement.unlocked && (
-                              <Badge className="bg-accent text-white">
+                              <Badge className="bg-primary text-secondary">
                                 <Icon name="Check" size={14} className="mr-1" />
                                 Получено
                               </Badge>
