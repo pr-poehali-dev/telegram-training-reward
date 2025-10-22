@@ -67,9 +67,7 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-green-50">
       <div className="container max-w-4xl mx-auto px-4 py-6 pb-24">
         <div className="text-center mb-8 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-2 tracking-tight">
-            WORKOUT TRACKER
-          </h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-2 tracking-tight">Город Спорта</h1>
           <p className="text-muted-foreground">Твой путь к успеху</p>
         </div>
 
