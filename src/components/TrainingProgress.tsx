@@ -342,7 +342,9 @@ export default function TrainingProgress() {
                         {index + 1}
                       </div>
                       <div>
-                        <div className="font-medium text-black">{participant.full_name}</div>
+                        <div className="font-medium text-black">
+                          {participant.surname.charAt(0)}. {participant.name}
+                        </div>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
