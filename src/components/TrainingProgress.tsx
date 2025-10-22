@@ -259,9 +259,7 @@ export default function TrainingProgress() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="text-lg font-medium text-white">
-            Пройди 10 тренировок до 31.10 и получи скидку 15% на следующий блок!
-          </div>
+          <div className="text-lg font-medium text-white">Пройди 10 тренировок конца октября и получи скидку 15% на следующий блок!</div>
           
           {user && (
             <>
