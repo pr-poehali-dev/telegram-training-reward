@@ -101,7 +101,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                 'total_participants': stats['total_participants'],
                 'total_completed_goal': stats['total_completed_goal']
             },
-            'leaderboard': stats['leaderboard'][:10]  # Топ 10
+            'leaderboard': stats['leaderboard']
         }
         
         return {

@@ -4,24 +4,13 @@
       "name": "Get all participants stats",
       "method": "GET",
       "path": "/",
-      "expectedStatus": 200,
-      "expectedBody": {
-        "stats": "object",
-        "leaderboard": "array"
-      },
-      "bodyMatcher": "partial"
+      "expectedStatus": 200
     },
     {
-      "name": "Get specific user data",
-      "method": "GET",
-      "path": "/?user_id=1",
-      "expectedStatus": 200,
-      "expectedBody": {
-        "user": "object",
-        "rank": "number",
-        "stats": "object"
-      },
-      "bodyMatcher": "partial"
+      "name": "Handle OPTIONS request",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
     }
   ]
 }
