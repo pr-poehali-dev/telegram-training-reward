@@ -306,17 +306,9 @@ export default function TrainingProgress() {
                 
                 <Separator className="bg-gray-300" />
                 
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-700">Всего участников:</span>
-                    <span className="font-semibold text-black">{data.stats.total_participants}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-700">Выполнили план:</span>
-                    <Badge className="bg-black text-primary border border-primary font-semibold">
-                      {data.stats.total_completed_goal} чел.
-                    </Badge>
-                  </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-700">Всего участников:</span>
+                  <span className="font-semibold text-black">{data.stats.total_participants}</span>
                 </div>
               </CardContent>
             </Card>
