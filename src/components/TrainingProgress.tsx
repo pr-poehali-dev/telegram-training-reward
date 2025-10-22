@@ -145,14 +145,16 @@ export default function TrainingProgress() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-blue-50 to-purple-50">
-        <Card className="w-full max-w-md">
+      <div className="min-h-screen flex items-center justify-center p-4 bg-white">
+        <Card className="w-full max-w-md border-2 border-black shadow-lg">
           <CardHeader className="text-center">
-            <div className="mx-auto mb-4 w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-              <Icon name="Trophy" className="w-8 h-8 text-white" />
-            </div>
-            <CardTitle className="text-2xl">Челлендж: 10 тренировок</CardTitle>
-            <p className="text-muted-foreground mt-2">
+            <img 
+              src="https://cdn.poehali.dev/files/f7749e8b-59af-4ee0-825b-bc5b0dd1fae9.jpg" 
+              alt="Город Спорта" 
+              className="w-32 h-32 mx-auto mb-4 object-contain"
+            />
+            <CardTitle className="text-2xl font-bold text-black">Челлендж: 10 тренировок</CardTitle>
+            <p className="text-gray-700 mt-2">
               Войдите, чтобы узнать ваш прогресс
             </p>
           </CardHeader>
@@ -196,7 +198,7 @@ export default function TrainingProgress() {
 
               <Button 
                 type="submit" 
-                className="w-full" 
+                className="w-full bg-primary hover:bg-primary/90 text-black font-bold" 
                 disabled={loading}
               >
                 {loading ? (
@@ -222,52 +224,59 @@ export default function TrainingProgress() {
   const progress = user ? (user.trainings_completed / 10) * 100 : 0;
 
   return (
-    <div className="container max-w-2xl mx-auto p-4 space-y-6">
-      <div className="flex justify-end">
-        <Button 
-          variant="outline" 
-          size="sm"
-          onClick={() => {
-            setIsAuthenticated(false);
-            setData(null);
-            setSurname('');
-            setName('');
-            setError('');
-            localStorage.removeItem('training_surname');
-            localStorage.removeItem('training_name');
-          }}
-        >
-          <Icon name="LogOut" className="w-4 h-4 mr-2" />
-          Выйти
-        </Button>
-      </div>
+    <div className="min-h-screen bg-white">
+      <div className="container max-w-2xl mx-auto p-4 space-y-6">
+        <div className="flex items-center justify-between">
+          <img 
+            src="https://cdn.poehali.dev/files/f7749e8b-59af-4ee0-825b-bc5b0dd1fae9.jpg" 
+            alt="Город Спорта" 
+            className="w-20 h-20 object-contain"
+          />
+          <Button 
+            variant="outline" 
+            size="sm"
+            className="border-black text-black hover:bg-primary hover:text-black"
+            onClick={() => {
+              setIsAuthenticated(false);
+              setData(null);
+              setSurname('');
+              setName('');
+              setError('');
+              localStorage.removeItem('training_surname');
+              localStorage.removeItem('training_name');
+            }}
+          >
+            <Icon name="LogOut" className="w-4 h-4 mr-2" />
+            Выйти
+          </Button>
+        </div>
 
-      <Card className="bg-gradient-to-br from-blue-500 to-purple-600 text-white border-0">
+      <Card className="bg-black text-primary border-2 border-primary shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl flex items-center gap-2">
+          <CardTitle className="text-2xl flex items-center gap-2 text-primary font-bold">
             <Icon name="Trophy" className="w-6 h-6" />
             Челлендж: 10 тренировок
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="text-lg font-medium">
+          <div className="text-lg font-medium text-white">
             Пройди 10 тренировок до 31.10 и получи скидку 15% на следующий блок!
           </div>
           
           {user && (
             <>
               <div className="space-y-2">
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between text-sm text-white">
                   <span>Прогресс</span>
-                  <span className="font-bold">{user.trainings_completed} из 10</span>
+                  <span className="font-bold text-primary">{user.trainings_completed} из 10</span>
                 </div>
-                <Progress value={progress} className="h-3 bg-white/20" />
+                <Progress value={progress} className="h-3 bg-gray-800" />
               </div>
               
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div className="bg-primary/10 border border-primary rounded-lg p-4">
                 <div className="text-center">
-                  <div className="text-4xl font-bold">{user.trainings_left}</div>
-                  <div className="text-sm opacity-90">тренировок до подарка</div>
+                  <div className="text-4xl font-bold text-primary">{user.trainings_left}</div>
+                  <div className="text-sm text-white">тренировок до подарка</div>
                 </div>
               </div>
             </>
@@ -278,35 +287,35 @@ export default function TrainingProgress() {
       {data && (
         <>
           {user && (
-            <Card>
+            <Card className="border-2 border-black">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
+                <CardTitle className="flex items-center gap-2 text-black font-bold">
                   <Icon name="BarChart3" className="w-5 h-5" />
                   Ваша статистика
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center p-4 bg-muted rounded-lg">
-                    <div className="text-2xl font-bold text-primary">{user.trainings_completed}</div>
-                    <div className="text-sm text-muted-foreground">Выполнено</div>
+                  <div className="text-center p-4 bg-primary/10 border-2 border-primary rounded-lg">
+                    <div className="text-2xl font-bold text-black">{user.trainings_completed}</div>
+                    <div className="text-sm text-gray-700">Выполнено</div>
                   </div>
-                  <div className="text-center p-4 bg-muted rounded-lg">
-                    <div className="text-2xl font-bold text-primary">#{data.rank}</div>
-                    <div className="text-sm text-muted-foreground">Ваше место</div>
+                  <div className="text-center p-4 bg-primary/10 border-2 border-primary rounded-lg">
+                    <div className="text-2xl font-bold text-black">#{data.rank}</div>
+                    <div className="text-sm text-gray-700">Ваше место</div>
                   </div>
                 </div>
                 
-                <Separator />
+                <Separator className="bg-gray-300" />
                 
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-muted-foreground">Всего участников:</span>
-                    <span className="font-semibold">{data.stats.total_participants}</span>
+                    <span className="text-gray-700">Всего участников:</span>
+                    <span className="font-semibold text-black">{data.stats.total_participants}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-muted-foreground">Выполнили план:</span>
-                    <Badge variant="secondary" className="font-semibold">
+                    <span className="text-gray-700">Выполнили план:</span>
+                    <Badge className="bg-black text-primary border border-primary font-semibold">
                       {data.stats.total_completed_goal} чел.
                     </Badge>
                   </div>
@@ -315,9 +324,9 @@ export default function TrainingProgress() {
             </Card>
           )}
 
-          <Card>
+          <Card className="border-2 border-black">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 text-black font-bold">
                 <Icon name="Users" className="w-5 h-5" />
                 Топ-10 участников
               </CardTitle>
@@ -329,26 +338,26 @@ export default function TrainingProgress() {
                     key={participant.id}
                     className={`flex items-center justify-between p-3 rounded-lg ${
                       user && participant.id === user.id 
-                        ? 'bg-primary/10 border-2 border-primary' 
-                        : 'bg-muted'
+                        ? 'bg-primary/20 border-2 border-primary' 
+                        : 'bg-gray-100 border border-gray-300'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
-                        index === 0 ? 'bg-yellow-500 text-white' :
-                        index === 1 ? 'bg-gray-400 text-white' :
-                        index === 2 ? 'bg-orange-600 text-white' :
-                        'bg-muted-foreground/20'
+                        index === 0 ? 'bg-primary text-black border-2 border-black' :
+                        index === 1 ? 'bg-gray-300 text-black border-2 border-gray-500' :
+                        index === 2 ? 'bg-gray-200 text-black border-2 border-gray-400' :
+                        'bg-white text-black border border-gray-400'
                       }`}>
                         {index + 1}
                       </div>
                       <div>
-                        <div className="font-medium">{participant.full_name}</div>
+                        <div className="font-medium text-black">{participant.full_name}</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Icon name="Dumbbell" className="w-4 h-4 text-muted-foreground" />
-                      <span className="font-bold">{participant.trainings_completed}</span>
+                      <Icon name="Dumbbell" className="w-4 h-4 text-gray-700" />
+                      <span className="font-bold text-black">{participant.trainings_completed}</span>
                     </div>
                   </div>
                 ))}
@@ -357,6 +366,7 @@ export default function TrainingProgress() {
           </Card>
         </>
       )}
+      </div>
     </div>
   );
 }
