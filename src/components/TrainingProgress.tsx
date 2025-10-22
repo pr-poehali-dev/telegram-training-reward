@@ -39,6 +39,58 @@ export default function TrainingProgress() {
   const [name, setName] = useState('');
   const [error, setError] = useState('');
 
+  useEffect(() => {
+    const savedSurname = localStorage.getItem('training_surname');
+    const savedName = localStorage.getItem('training_name');
+    
+    if (savedSurname && savedName) {
+      setSurname(savedSurname);
+      setName(savedName);
+      autoLogin(savedSurname, savedName);
+    }
+  }, []);
+
+  const autoLogin = async (savedSurname: string, savedName: string) => {
+    setLoading(true);
+
+    try {
+      const response = await fetch(BACKEND_URL);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const result = await response.json();
+      
+      const foundUser = result.leaderboard.find(
+        (participant: UserData) => 
+          participant.name.toLowerCase() === savedName.trim().toLowerCase() &&
+          participant.surname.toLowerCase() === savedSurname.trim().toLowerCase()
+      );
+
+      if (foundUser) {
+        const userRank = result.leaderboard.findIndex(
+          (p: UserData) => p.id === foundUser.id
+        ) + 1;
+
+        setData({
+          user: foundUser,
+          rank: userRank,
+          stats: result.stats,
+          leaderboard: result.leaderboard
+        });
+        setIsAuthenticated(true);
+      } else {
+        localStorage.removeItem('training_surname');
+        localStorage.removeItem('training_name');
+      }
+    } catch (error) {
+      console.error('Ошибка загрузки данных:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -77,6 +129,9 @@ export default function TrainingProgress() {
           leaderboard: result.leaderboard
         });
         setIsAuthenticated(true);
+        
+        localStorage.setItem('training_surname', surname.trim());
+        localStorage.setItem('training_name', name.trim());
       } else {
         setError(`Пользователь ${surname} ${name} не найден. Проверьте правильность написания.`);
       }
@@ -178,6 +233,8 @@ export default function TrainingProgress() {
             setSurname('');
             setName('');
             setError('');
+            localStorage.removeItem('training_surname');
+            localStorage.removeItem('training_name');
           }}
         >
           <Icon name="LogOut" className="w-4 h-4 mr-2" />
