@@ -259,24 +259,42 @@ export default function TrainingProgress() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="text-lg font-medium text-white">Пройди 10 тренировок в октябре и получи скидку 15% на следующий блок!</div>
-          
-          {user && (
-            <>
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm text-white">
-                  <span>Прогресс</span>
-                  <span className="font-bold text-primary">{user.trainings_completed} из 10</span>
-                </div>
-                <Progress value={progress} className="h-3 bg-gray-800" />
+          {user && user.trainings_completed >= 10 ? (
+            <div className="text-center space-y-4">
+              <div className="text-5xl">🎉</div>
+              <div className="text-2xl font-bold text-primary">Поздравляем!</div>
+              <div className="text-lg font-medium text-white">
+                Вы выполнили челлендж и получили скидку 15% на следующий блок тренировок!
               </div>
-              
               <div className="bg-primary/10 border border-primary rounded-lg p-4">
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-primary">{user.trainings_left}</div>
-                  <div className="text-sm text-white">тренировок до подарка</div>
+                  <div className="text-4xl font-bold text-primary">10/10</div>
+                  <div className="text-sm text-white">Челлендж завершён! 🏆</div>
                 </div>
               </div>
+            </div>
+          ) : (
+            <>
+              <div className="text-lg font-medium text-white">Пройди 10 тренировок в октябре и получи скидку 15% на следующий блок!</div>
+              
+              {user && (
+                <>
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm text-white">
+                      <span>Прогресс</span>
+                      <span className="font-bold text-primary">{user.trainings_completed} из 10</span>
+                    </div>
+                    <Progress value={progress} className="h-3 bg-gray-800" />
+                  </div>
+                  
+                  <div className="bg-primary/10 border border-primary rounded-lg p-4">
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-primary">{user.trainings_left}</div>
+                      <div className="text-sm text-white">тренировок до подарка</div>
+                    </div>
+                  </div>
+                </>
+              )}
             </>
           )}
         </CardContent>
