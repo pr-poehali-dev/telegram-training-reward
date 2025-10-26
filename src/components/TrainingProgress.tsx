@@ -341,52 +341,28 @@ export default function TrainingProgress() {
                 <div>
                   <div className="text-sm font-semibold text-gray-700 mb-3 text-center">Ваши награды</div>
                   <div className="grid grid-cols-3 gap-3">
-                    <div className={`text-center p-3 rounded-lg border-2 transition-all ${
-                      user.trainings_completed >= 5 
-                        ? 'bg-amber-700 border-amber-800' 
-                        : 'bg-gray-200 border-gray-300'
-                    }`}>
-                      <Icon name="Medal" className={`w-8 h-8 mx-auto mb-1 ${
-                        user.trainings_completed >= 5 ? 'text-yellow-200' : 'text-gray-400'
+                    <div className="text-center p-3 rounded-lg bg-white border-2 border-gray-200">
+                      <Icon name="Medal" className={`w-10 h-10 mx-auto mb-1 ${
+                        user.trainings_completed >= 5 ? 'text-amber-600' : 'text-gray-300'
                       }`} />
-                      <div className={`text-xs font-bold ${
-                        user.trainings_completed >= 5 ? 'text-yellow-100' : 'text-gray-500'
-                      }`}>Бронза</div>
-                      <div className={`text-[10px] ${
-                        user.trainings_completed >= 5 ? 'text-yellow-200' : 'text-gray-400'
-                      }`}>5 тренировок</div>
+                      <div className="text-xs font-bold text-gray-700">Бронза</div>
+                      <div className="text-[10px] text-gray-500">5 тренировок</div>
                     </div>
                     
-                    <div className={`text-center p-3 rounded-lg border-2 transition-all ${
-                      user.trainings_completed >= 7 
-                        ? 'bg-gray-400 border-gray-500' 
-                        : 'bg-gray-200 border-gray-300'
-                    }`}>
-                      <Icon name="Medal" className={`w-8 h-8 mx-auto mb-1 ${
-                        user.trainings_completed >= 7 ? 'text-gray-100' : 'text-gray-400'
+                    <div className="text-center p-3 rounded-lg bg-white border-2 border-gray-200">
+                      <Icon name="Medal" className={`w-10 h-10 mx-auto mb-1 ${
+                        user.trainings_completed >= 7 ? 'text-gray-400' : 'text-gray-300'
                       }`} />
-                      <div className={`text-xs font-bold ${
-                        user.trainings_completed >= 7 ? 'text-white' : 'text-gray-500'
-                      }`}>Серебро</div>
-                      <div className={`text-[10px] ${
-                        user.trainings_completed >= 7 ? 'text-gray-100' : 'text-gray-400'
-                      }`}>7 тренировок</div>
+                      <div className="text-xs font-bold text-gray-700">Серебро</div>
+                      <div className="text-[10px] text-gray-500">7 тренировок</div>
                     </div>
                     
-                    <div className={`text-center p-3 rounded-lg border-2 transition-all ${
-                      user.trainings_completed >= 10 
-                        ? 'bg-primary border-black' 
-                        : 'bg-gray-200 border-gray-300'
-                    }`}>
-                      <Icon name="Medal" className={`w-8 h-8 mx-auto mb-1 ${
-                        user.trainings_completed >= 10 ? 'text-yellow-300' : 'text-gray-400'
+                    <div className="text-center p-3 rounded-lg bg-white border-2 border-gray-200">
+                      <Icon name="Medal" className={`w-10 h-10 mx-auto mb-1 ${
+                        user.trainings_completed >= 10 ? 'text-yellow-500' : 'text-gray-300'
                       }`} />
-                      <div className={`text-xs font-bold ${
-                        user.trainings_completed >= 10 ? 'text-black' : 'text-gray-500'
-                      }`}>Золото</div>
-                      <div className={`text-[10px] ${
-                        user.trainings_completed >= 10 ? 'text-gray-800' : 'text-gray-400'
-                      }`}>10 тренировок</div>
+                      <div className="text-xs font-bold text-gray-700">Золото</div>
+                      <div className="text-[10px] text-gray-500">10 тренировок</div>
                     </div>
                   </div>
                 </div>
