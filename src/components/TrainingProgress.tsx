@@ -300,6 +300,22 @@ export default function TrainingProgress() {
         </CardContent>
       </Card>
 
+      {data && data.stats && (
+        <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-2 border-primary">
+          <CardContent className="pt-6">
+            <div className="flex items-center justify-center gap-3">
+              <Icon name="Users" className="w-6 h-6 text-primary" />
+              <div className="text-center">
+                <span className="text-lg text-gray-700">Сегодня челлендж выполнили </span>
+                <span className="text-2xl font-bold text-primary">{data.stats.total_completed_goal}</span>
+                <span className="text-lg text-gray-700"> {data.stats.total_completed_goal === 1 ? 'человек' : data.stats.total_completed_goal < 5 ? 'человека' : 'человек'}!</span>
+              </div>
+              <Icon name="Flame" className="w-6 h-6 text-primary" />
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       {data && (
         <>
           {user && (
