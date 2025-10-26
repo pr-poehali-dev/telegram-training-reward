@@ -263,9 +263,7 @@ export default function TrainingProgress() {
             <div className="text-center space-y-4">
               <div className="text-5xl">🎉</div>
               <div className="text-2xl font-bold text-primary">Поздравляем!</div>
-              <div className="text-lg font-medium text-white">
-                Вы выполнили челлендж и получили скидку 15% на следующий блок тренировок!
-              </div>
+              <div className="text-lg font-medium text-white">Поздравляю с успешным прохождением 10 тренировок в октябре!  Воспользуйтесь скидкой 15% на покупку следующего тренировочного блока и продолжайте двигаться вперед к новым вершинам!</div>
               <div className="bg-primary/10 border border-primary rounded-lg p-4">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-primary">10/10</div>
