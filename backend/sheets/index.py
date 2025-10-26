@@ -48,7 +48,7 @@ def get_sheet_data() -> List[Dict[str, Any]]:
 
 def calculate_stats(participants: List[Dict[str, Any]]) -> Dict[str, Any]:
     """Рассчитать общую статистику"""
-    total_completed = len([p for p in participants if p['trainings_left'] == 0])
+    total_completed = len([p for p in participants if p['trainings_completed'] >= 10])
     
     # Сортируем по количеству выполненных тренировок
     sorted_participants = sorted(participants, key=lambda x: x['trainings_completed'], reverse=True)
