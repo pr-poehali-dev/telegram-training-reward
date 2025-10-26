@@ -341,7 +341,9 @@ export default function TrainingProgress() {
                 <div>
                   <div className="text-sm font-semibold text-gray-700 mb-3 text-center">Ваши награды</div>
                   <div className="grid grid-cols-3 gap-3">
-                    <div className="text-center p-3 rounded-lg bg-white border-2 border-gray-200">
+                    <div className={`text-center p-3 rounded-lg bg-white border-2 ${
+                      user.trainings_completed >= 5 ? 'border-amber-600' : 'border-gray-200'
+                    }`}>
                       <Icon name="Medal" className={`w-10 h-10 mx-auto mb-1 ${
                         user.trainings_completed >= 5 ? 'text-amber-600' : 'text-gray-300'
                       }`} />
@@ -349,7 +351,9 @@ export default function TrainingProgress() {
                       <div className="text-[10px] text-gray-500">5 тренировок</div>
                     </div>
                     
-                    <div className="text-center p-3 rounded-lg bg-white border-2 border-gray-200">
+                    <div className={`text-center p-3 rounded-lg bg-white border-2 ${
+                      user.trainings_completed >= 7 ? 'border-gray-400' : 'border-gray-200'
+                    }`}>
                       <Icon name="Medal" className={`w-10 h-10 mx-auto mb-1 ${
                         user.trainings_completed >= 7 ? 'text-gray-400' : 'text-gray-300'
                       }`} />
@@ -357,7 +361,9 @@ export default function TrainingProgress() {
                       <div className="text-[10px] text-gray-500">7 тренировок</div>
                     </div>
                     
-                    <div className="text-center p-3 rounded-lg bg-white border-2 border-gray-200">
+                    <div className={`text-center p-3 rounded-lg bg-white border-2 ${
+                      user.trainings_completed >= 10 ? 'border-yellow-500' : 'border-gray-200'
+                    }`}>
                       <Icon name="Medal" className={`w-10 h-10 mx-auto mb-1 ${
                         user.trainings_completed >= 10 ? 'text-yellow-500' : 'text-gray-300'
                       }`} />
