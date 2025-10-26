@@ -350,12 +350,12 @@ export default function TrainingProgress() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-black font-bold">
                 <Icon name="Users" className="w-5 h-5" />
-                Топ-10 участников
+                Топ-15 участников
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
-                {data.leaderboard.slice(0, 10).map((participant, index) => (
+                {data.leaderboard.slice(0, 15).map((participant, index) => (
                   <div
                     key={participant.id}
                     className={`flex items-center justify-between p-3 rounded-lg ${
