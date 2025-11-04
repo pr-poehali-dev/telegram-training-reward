@@ -73,6 +73,7 @@ export default function TrainingProgress() {
     );
   }
 
+  const totalCount = data?.leaderboard.length || 0;
   const completedCount = data?.leaderboard.filter(u => u.trainings_completed >= 10).length || 0;
   const closeCount = data?.leaderboard.filter(u => u.trainings_completed >= 7 && u.trainings_completed <= 9).length || 0;
   const othersCount = data?.leaderboard.filter(u => u.trainings_completed >= 1 && u.trainings_completed <= 6).length || 0;
@@ -95,9 +96,14 @@ export default function TrainingProgress() {
 
         <Card className="bg-black text-primary border-2 border-primary shadow-lg">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-primary font-bold">
-              <Icon name="Trophy" className="w-6 h-6" />
-              Челлендж: 10 тренировок
+            <CardTitle className="text-2xl flex items-center justify-between text-primary font-bold">
+              <div className="flex items-center gap-2">
+                <Icon name="Trophy" className="w-6 h-6" />
+                Челлендж: 10 тренировок
+              </div>
+              <div className="text-lg font-normal">
+                Участников: {totalCount}
+              </div>
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
