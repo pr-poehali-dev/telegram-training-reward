@@ -74,7 +74,8 @@ export default function TrainingProgress() {
   }
 
   const completedCount = data?.leaderboard.filter(u => u.trainings_completed >= 10).length || 0;
-  const totalCount = data?.leaderboard.length || 0;
+  const closeCount = data?.leaderboard.filter(u => u.trainings_completed >= 7 && u.trainings_completed <= 9).length || 0;
+  const othersCount = data?.leaderboard.filter(u => u.trainings_completed >= 1 && u.trainings_completed <= 6).length || 0;
 
   const filteredLeaderboard = data?.leaderboard.filter(participant => {
     const fullName = `${participant.name} ${participant.surname}`.toLowerCase();
@@ -100,14 +101,21 @@ export default function TrainingProgress() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-primary/10 p-4 rounded-lg border border-primary/30">
-                <div className="text-3xl font-bold text-primary">{totalCount}</div>
-                <div className="text-sm text-primary/80">Всего участников</div>
+            <div className="grid grid-cols-3 gap-3">
+              <div className="bg-green-500/20 p-4 rounded-lg border border-green-500/40">
+                <div className="text-2xl font-bold text-primary">{completedCount}</div>
+                <div className="text-xs text-primary/80">Выполнили</div>
+                <div className="text-xs text-primary/60">10+ тренировок</div>
+              </div>
+              <div className="bg-yellow-500/20 p-4 rounded-lg border border-yellow-500/40">
+                <div className="text-2xl font-bold text-primary">{closeCount}</div>
+                <div className="text-xs text-primary/80">Были близко</div>
+                <div className="text-xs text-primary/60">7-9 тренировок</div>
               </div>
               <div className="bg-primary/10 p-4 rounded-lg border border-primary/30">
-                <div className="text-3xl font-bold text-primary">{completedCount}</div>
-                <div className="text-sm text-primary/80">Завершили челлендж</div>
+                <div className="text-2xl font-bold text-primary">{othersCount}</div>
+                <div className="text-xs text-primary/80">Остальные</div>
+                <div className="text-xs text-primary/60">1-6 тренировок</div>
               </div>
             </div>
           </CardContent>
