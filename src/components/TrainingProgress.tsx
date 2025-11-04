@@ -107,21 +107,21 @@ export default function TrainingProgress() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="grid grid-cols-3 gap-3">
-              <div className="bg-green-500/20 p-4 rounded-lg border border-green-500/40 shadow-[0_4px_12px_rgba(34,197,94,0.15)]">
-                <div className="text-2xl font-bold text-primary">{completedCount}</div>
-                <div className="text-xs text-primary/80">Выполнили челлендж</div>
-                <div className="text-xs text-primary/60">10+ тренировок</div>
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              <div className="bg-green-500/20 p-2 sm:p-4 rounded-lg border border-green-500/40 shadow-[0_4px_12px_rgba(34,197,94,0.15)]">
+                <div className="text-xl sm:text-2xl font-bold text-primary">{completedCount}</div>
+                <div className="text-[10px] sm:text-xs text-primary/80 leading-tight">Выполнили</div>
+                <div className="text-[9px] sm:text-xs text-primary/60 leading-tight">10+ тренировок</div>
               </div>
-              <div className="bg-yellow-500/20 p-4 rounded-lg border border-yellow-500/40 shadow-[0_4px_12px_rgba(234,179,8,0.15)]">
-                <div className="text-2xl font-bold text-primary">{closeCount}</div>
-                <div className="text-xs text-primary/80">Близко к финалу</div>
-                <div className="text-xs text-primary/60">7-9 тренировок</div>
+              <div className="bg-yellow-500/20 p-2 sm:p-4 rounded-lg border border-yellow-500/40 shadow-[0_4px_12px_rgba(234,179,8,0.15)]">
+                <div className="text-xl sm:text-2xl font-bold text-primary">{closeCount}</div>
+                <div className="text-[10px] sm:text-xs text-primary/80 leading-tight">Близко</div>
+                <div className="text-[9px] sm:text-xs text-primary/60 leading-tight">7-9 тренировок</div>
               </div>
-              <div className="bg-primary/10 p-4 rounded-lg border border-primary/30 shadow-[0_4px_12px_rgba(255,217,0,0.1)]">
-                <div className="text-2xl font-bold text-primary">{othersCount}</div>
-                <div className="text-xs text-primary/80">Победа впереди!</div>
-                <div className="text-xs text-primary/60">1-6 тренировок</div>
+              <div className="bg-primary/10 p-2 sm:p-4 rounded-lg border border-primary/30 shadow-[0_4px_12px_rgba(255,217,0,0.1)]">
+                <div className="text-xl sm:text-2xl font-bold text-primary">{othersCount}</div>
+                <div className="text-[10px] sm:text-xs text-primary/80 leading-tight">Остальные</div>
+                <div className="text-[9px] sm:text-xs text-primary/60 leading-tight">1-6 тренировок</div>
               </div>
             </div>
           </CardContent>
