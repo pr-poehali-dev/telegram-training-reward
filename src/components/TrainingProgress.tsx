@@ -120,7 +120,7 @@ export default function TrainingProgress() {
               </div>
               <div className="bg-primary/10 p-2 sm:p-4 rounded-lg border border-primary/30 shadow-[0_4px_12px_rgba(255,217,0,0.1)]">
                 <div className="text-xl sm:text-2xl font-bold text-primary">{othersCount}</div>
-                <div className="text-[10px] sm:text-xs text-primary/80 leading-tight">Остальные</div>
+                <div className="text-[10px] sm:text-xs text-primary/80 leading-tight">В процессе</div>
                 <div className="text-[9px] sm:text-xs text-primary/60 leading-tight">1-6 тренировок</div>
               </div>
             </div>
