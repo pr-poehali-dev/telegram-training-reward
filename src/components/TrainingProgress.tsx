@@ -144,7 +144,7 @@ export default function TrainingProgress() {
                       
                       <div className="flex-1">
                         <div className="font-semibold text-black">
-                          {participant.full_name}
+                          {participant.name} {participant.surname.charAt(0)}.
                         </div>
                         <div className="flex items-center gap-2 mt-1">
                           <Badge
@@ -163,18 +163,7 @@ export default function TrainingProgress() {
                         </div>
                       </div>
 
-                      {isTopThree && (
-                        <Icon 
-                          name="Medal" 
-                          className={`w-6 h-6 ${
-                            index === 0
-                              ? 'text-yellow-500'
-                              : index === 1
-                              ? 'text-gray-400'
-                              : 'text-amber-700'
-                          }`}
-                        />
-                      )}
+
                     </div>
                   </div>
                 );
