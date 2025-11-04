@@ -130,15 +130,7 @@ export default function TrainingProgress() {
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <div className={`flex items-center justify-center w-10 h-10 rounded-full font-bold ${
-                        isTopThree
-                          ? index === 0
-                            ? 'bg-yellow-500 text-white'
-                            : index === 1
-                            ? 'bg-gray-400 text-white'
-                            : 'bg-amber-700 text-white'
-                          : 'bg-gray-200 text-gray-700'
-                      }`}>
+                      <div className="flex items-center justify-center w-10 h-10 rounded-full font-bold bg-gray-200 text-gray-700">
                         {index + 1}
                       </div>
                       
