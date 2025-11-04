@@ -183,7 +183,7 @@ export default function TrainingProgress() {
                             className={isCompleted ? "bg-primary text-black font-bold" : ""}
                           >
                             <Icon name="Dumbbell" className="w-3 h-3 mr-1" />
-                            {participant.trainings_completed} / 10
+                            <span className="whitespace-nowrap">{participant.trainings_completed} / 10</span>
                           </Badge>
                           {isCompleted && (
                             <Badge className="bg-green-600 hover:bg-green-700 text-white">
