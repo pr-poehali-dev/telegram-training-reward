@@ -141,7 +141,7 @@ export default function TrainingProgress() {
                   placeholder="Поиск по имени или фамилии..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 pr-4"
                 />
               </div>
             </div>
