@@ -100,6 +100,21 @@
   body {
     @apply bg-background text-foreground;
     font-family: "Open Sans", sans-serif;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 35px,
+        rgba(255, 217, 0, 0.02) 35px,
+        rgba(255, 217, 0, 0.02) 70px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 35px,
+        rgba(0, 0, 0, 0.01) 35px,
+        rgba(0, 0, 0, 0.01) 70px
+      );
   }
 
   h1,

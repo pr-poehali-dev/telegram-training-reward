@@ -94,7 +94,7 @@ export default function TrainingProgress() {
           />
         </div>
 
-        <Card className="bg-black text-primary border-2 border-primary shadow-lg">
+        <Card className="bg-black text-primary border-2 border-primary shadow-[0_8px_30px_rgb(0,0,0,0.12),0_4px_8px_rgb(255,217,0,0.2)]">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center justify-between text-primary font-bold">
               <div className="flex items-center gap-2">
@@ -108,17 +108,17 @@ export default function TrainingProgress() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-3 gap-3">
-              <div className="bg-green-500/20 p-4 rounded-lg border border-green-500/40">
+              <div className="bg-green-500/20 p-4 rounded-lg border border-green-500/40 shadow-[0_4px_12px_rgba(34,197,94,0.15)]">
                 <div className="text-2xl font-bold text-primary">{completedCount}</div>
                 <div className="text-xs text-primary/80">Выполнили челлендж</div>
                 <div className="text-xs text-primary/60">10+ тренировок</div>
               </div>
-              <div className="bg-yellow-500/20 p-4 rounded-lg border border-yellow-500/40">
+              <div className="bg-yellow-500/20 p-4 rounded-lg border border-yellow-500/40 shadow-[0_4px_12px_rgba(234,179,8,0.15)]">
                 <div className="text-2xl font-bold text-primary">{closeCount}</div>
                 <div className="text-xs text-primary/80">Близко к финалу</div>
                 <div className="text-xs text-primary/60">7-9 тренировок</div>
               </div>
-              <div className="bg-primary/10 p-4 rounded-lg border border-primary/30">
+              <div className="bg-primary/10 p-4 rounded-lg border border-primary/30 shadow-[0_4px_12px_rgba(255,217,0,0.1)]">
                 <div className="text-2xl font-bold text-primary">{othersCount}</div>
                 <div className="text-xs text-primary/80">Победа впереди!</div>
                 <div className="text-xs text-primary/60">1-6 тренировок</div>
@@ -127,7 +127,7 @@ export default function TrainingProgress() {
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-black shadow-lg">
+        <Card className="border-2 border-black shadow-[0_8px_30px_rgb(0,0,0,0.08),0_2px_10px_rgb(0,0,0,0.04)]">
           <CardHeader>
             <CardTitle className="text-xl font-bold text-black flex items-center gap-2">
               <Icon name="Users" className="w-5 h-5" />
@@ -164,8 +164,8 @@ export default function TrainingProgress() {
                     key={participant.id}
                     className={`p-4 rounded-lg border-2 transition-all ${
                       isCompleted
-                        ? 'bg-primary/5 border-primary'
-                        : 'bg-gray-50 border-gray-200'
+                        ? 'bg-primary/5 border-primary shadow-[0_4px_16px_rgba(255,217,0,0.12)]'
+                        : 'bg-gray-50 border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)]'
                     }`}
                   >
                     <div className="flex items-center gap-3">
