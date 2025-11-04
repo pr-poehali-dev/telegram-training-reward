@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
-import { Separator } from '@/components/ui/separator';
+import { Input } from '@/components/ui/input';
 import funcUrls from '../../backend/func2url.json';
 
 interface UserData {
@@ -31,6 +31,7 @@ const BACKEND_URL = funcUrls.sheets;
 export default function TrainingProgress() {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     loadLeaderboard();
@@ -75,6 +76,11 @@ export default function TrainingProgress() {
   const completedCount = data?.leaderboard.filter(u => u.trainings_completed >= 10).length || 0;
   const totalCount = data?.leaderboard.length || 0;
 
+  const filteredLeaderboard = data?.leaderboard.filter(participant => {
+    const fullName = `${participant.name} ${participant.surname}`.toLowerCase();
+    return fullName.includes(searchQuery.toLowerCase());
+  }) || [];
+
   return (
     <div className="min-h-screen bg-white">
       <div className="container max-w-2xl mx-auto p-4 space-y-6">
@@ -113,10 +119,29 @@ export default function TrainingProgress() {
               <Icon name="Users" className="w-5 h-5" />
               Рейтинг участников
             </CardTitle>
+            <div className="mt-4">
+              <div className="relative">
+                <Icon name="Search" className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <Input
+                  type="text"
+                  placeholder="Поиск по имени или фамилии..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
+            </div>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {data?.leaderboard.map((participant, index) => {
+              {filteredLeaderboard.length === 0 ? (
+                <div className="text-center py-8 text-gray-500">
+                  <Icon name="Search" className="w-12 h-12 mx-auto mb-2 text-gray-300" />
+                  <p>Участники не найдены</p>
+                </div>
+              ) : (
+                filteredLeaderboard.map((participant, index) => {
+                const actualIndex = data?.leaderboard.findIndex(p => p.id === participant.id) || 0;
                 const isCompleted = participant.trainings_completed >= 10;
                 const isTopThree = index < 3;
                 
@@ -131,7 +156,7 @@ export default function TrainingProgress() {
                   >
                     <div className="flex items-center gap-3">
                       <div className="flex items-center justify-center w-10 h-10 rounded-full font-bold bg-gray-200 text-gray-700">
-                        {index + 1}
+                        {actualIndex + 1}
                       </div>
                       
                       <div className="flex-1">
@@ -159,7 +184,8 @@ export default function TrainingProgress() {
                     </div>
                   </div>
                 );
-              })}
+              })
+              )}
             </div>
           </CardContent>
         </Card>
