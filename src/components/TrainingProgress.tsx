@@ -104,7 +104,7 @@ export default function TrainingProgress() {
             <div className="grid grid-cols-3 gap-3">
               <div className="bg-green-500/20 p-4 rounded-lg border border-green-500/40">
                 <div className="text-2xl font-bold text-primary">{completedCount}</div>
-                <div className="text-xs text-primary/80">Выполнили</div>
+                <div className="text-xs text-primary/80">Выполнили челлендж</div>
                 <div className="text-xs text-primary/60">10+ тренировок</div>
               </div>
               <div className="bg-yellow-500/20 p-4 rounded-lg border border-yellow-500/40">
