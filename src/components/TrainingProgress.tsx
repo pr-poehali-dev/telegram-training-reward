@@ -96,12 +96,12 @@ export default function TrainingProgress() {
 
         <Card className="bg-black text-primary border-2 border-primary shadow-[0_8px_30px_rgb(0,0,0,0.12),0_4px_8px_rgb(255,217,0,0.2)]">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center justify-between text-primary font-bold">
-              <div className="flex items-center gap-2">
-                <Icon name="Trophy" className="w-6 h-6" />
-                Челлендж: 10 тренировок
+            <CardTitle className="text-lg sm:text-2xl flex items-center justify-between text-primary font-bold">
+              <div className="flex items-center gap-1 sm:gap-2">
+                <Icon name="Trophy" className="w-5 h-5 sm:w-6 sm:h-6" />
+                <span className="text-base sm:text-2xl">Челлендж: 10 тренировок</span>
               </div>
-              <div className="text-lg font-normal">
+              <div className="text-sm sm:text-lg font-normal whitespace-nowrap">
                 Участников: {totalCount}
               </div>
             </CardTitle>
