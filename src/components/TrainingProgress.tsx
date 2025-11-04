@@ -114,7 +114,7 @@ export default function TrainingProgress() {
               </div>
               <div className="bg-primary/10 p-4 rounded-lg border border-primary/30">
                 <div className="text-2xl font-bold text-primary">{othersCount}</div>
-                <div className="text-xs text-primary/80">Остальные</div>
+                <div className="text-xs text-primary/80">Победа впереди!</div>
                 <div className="text-xs text-primary/60">1-6 тренировок</div>
               </div>
             </div>
